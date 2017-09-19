@@ -9,5 +9,3 @@ class ChaJinHuaRule extends RuleAbstract
     protected $alias = '状元插金花';
     protected $level = 1200;
 }
-
-

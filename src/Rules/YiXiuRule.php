@@ -6,8 +6,7 @@ class YiXiuRule extends RuleAbstract
 {
     protected $name = '秀才';
     protected $alias = '一秀';
-    protected $level = 1200;
-    protected $baseLevel = 1200;
+    protected $level = 100;
 
     public function rule(array $dices)
     {
