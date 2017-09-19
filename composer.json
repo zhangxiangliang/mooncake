@@ -1,0 +1,29 @@
+{
+    "name": "zhangxiangliang/mooncake",
+    "description": "The Mid-Autumn Festival - Mooncake gambling rules",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zhangxiangliang",
+            "email": "326277403@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "6.0"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Zhangxiangliang\\Mooncake\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Zhangxiangliang\\Mooncake\\Tests\\": "tests/"
+        }
+    }
+}
