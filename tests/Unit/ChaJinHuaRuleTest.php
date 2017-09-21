@@ -27,9 +27,11 @@ class ChaJinHuaRuleTest extends TestCase
      */
     public function test_cha_jin_hua_validate_false()
     {
+        $target = [1, 1, 4, 4, 4, 4];
         foreach (range(1, 10) as $r) {
             $dices = $this->generateDices();
-            if ($dices != [1, 1, 4, 4, 4, 4]) {
+            sort($dices);
+            if ($dices !== $target) {
                 $passed = $this->rule->validate($dices);
                 $this->assertEquals($passed, false);
             }
