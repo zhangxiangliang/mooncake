@@ -71,6 +71,8 @@ class RuleAbstract implements Rule
      */
     public function rule(array $dices)
     {
+        sort($dices);
+        sort($this->dices);
         return $this->dices === $dices;
     }
 }
