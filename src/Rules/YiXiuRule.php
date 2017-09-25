@@ -4,9 +4,7 @@ namespace Zhangxiangliang\Mooncake\Rules;
 
 class YiXiuRule extends RuleAbstract
 {
-    protected $name = '秀才';
-    protected $alias = '一秀';
-    protected $level = 100;
+    protected $ruleName = 'yixiu';
 
     public function rule(array $dices)
     {

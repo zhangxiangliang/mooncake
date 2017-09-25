@@ -9,6 +9,7 @@ class YiXiuRuleTest extends TestCase
 {
     public function setUp()
     {
+        parent::setUp();
         $this->rule = new YiXiuRule;
     }
 
