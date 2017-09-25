@@ -9,6 +9,7 @@ class DuiTangRuleTest extends TestCase
 {
     public function setUp()
     {
+        parent::setUp();
         $this->rule = new DuiTangRule;
     }
 
