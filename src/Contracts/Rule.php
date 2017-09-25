@@ -5,33 +5,49 @@ namespace Zhangxiangliang\Mooncake\Contracts;
 interface Rule
 {
     /**
-     * Validate dices value
+     * 验证 骰子数组 基本规范
      * @param $dices
      * @return boolen
      */
     public function validate(array $dices);
 
     /**
-     * Get rule alias name
-     * @return string
-     */
-    public function getAlias();
-
-    /**
-     * Get rule name
+     * 获取 当前规则 官名
      * @return string
      */
     public function getName();
 
     /**
-     * Get rule level
+     * 获取 当前规则 别名
      * @return string
+     */
+    public function getAliasName();
+
+    /**
+     * 获取 当前规则 字段名
+     */
+    public function getFeildName();
+
+    /**
+     * 获取 当前规则 级别
+     * @return int
      */
     public function getLevel();
 
     /**
-     * Rule
+     * 获取 当前规则 积分
+     * @return int
+     */
+    public function getPoint();
+
+    /**
+     * 验证是否满足 当前规则
      * @return boolen
      */
     public function rule(array $dices);
+
+    /**
+     * 用于初始化 $name, $aliasName, $level, $point
+     */
+    public function setupConfig();
 }
