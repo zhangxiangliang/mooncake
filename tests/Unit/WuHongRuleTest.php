@@ -9,6 +9,7 @@ class WuHongRuleTest extends TestCase
 {
     public function setUp()
     {
+        parent::setUp();
         $this->rule = new WuHongRule;
     }
 
