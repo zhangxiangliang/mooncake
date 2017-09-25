@@ -2,10 +2,23 @@
 
 namespace Zhangxiangliang\Mooncake\Tests;
 
-use PHPUnit\Framework\TestCase as TestCaseBase;
+use Orchestra\Testbench\TestCase as TestCaseBase;
 
 class TestCase extends TestCaseBase
 {
+    protected function getPackageAliases($app)
+    {
+        return [
+            'config' => 'Illuminate\Config\Repository'
+        ];
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        $mooncake = require realpath(__DIR__ . '/../src/config.php');
+        $app['config']->set('mooncake', $mooncake);
+    }
+
     /**
      * 用户生成随机骰子数组
      * @return array
