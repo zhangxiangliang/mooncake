@@ -4,10 +4,7 @@ namespace Zhangxiangliang\Mooncake\Rules;
 
 class SiHongRule extends RuleAbstract
 {
-    protected $name = '状元';
-    protected $alias = '四红';
-    protected $level = 600;
-    protected $baseLevel = 600;
+    protected $ruleName = 'sihong';
 
     public function rule(array $dices)
     {
@@ -16,8 +13,8 @@ class SiHongRule extends RuleAbstract
         if(!in_array(4, $keys)) return false;
 
         $keys = array_keys($count, 1);
-        $this->level = $this->baseLevel;
-        foreach ($keys as $key) $this->level += $key;
+        $this->levelResult = $this->level;
+        foreach ($keys as $key) $this->levelResult += $key;
         return true;
     }
 }

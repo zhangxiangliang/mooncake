@@ -9,6 +9,7 @@ class SiHongRuleTest extends TestCase
 {
     public function setUp()
     {
+        parent::setUp();
         $this->rule = new SiHongRule;
     }
 
