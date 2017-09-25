@@ -4,9 +4,7 @@ namespace Zhangxiangliang\Mooncake\Rules;
 
 class SiJinRule extends RuleAbstract
 {
-    protected $name = '进士';
-    protected $alias = '四进';
-    protected $level = 300;
+    protected $ruleName = 'sijin';
 
     public function rule(array $dices)
     {
