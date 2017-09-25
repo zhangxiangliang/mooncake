@@ -9,6 +9,7 @@ class ErJuRuleTest extends TestCase
 {
     public function setUp()
     {
+        parent::setUp();
         $this->rule = new ErJuRule;
     }
 

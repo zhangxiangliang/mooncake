@@ -4,9 +4,7 @@ namespace Zhangxiangliang\Mooncake\Rules;
 
 class ErJuRule extends RuleAbstract
 {
-    protected $name = '举人';
-    protected $alias = '二举';
-    protected $level = 200;
+    protected $ruleName = 'erju';
 
     public function rule(array $dices)
     {
