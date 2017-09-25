@@ -9,6 +9,7 @@ class WuZiRuleTest extends TestCase
 {
     public function setUp()
     {
+        parent::setUp();
         $this->rule = new WuZiRule;
     }
 
