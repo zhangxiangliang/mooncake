@@ -28,20 +28,34 @@ class RuleAbstract implements Rule
     protected $dices;
 
     /**
-     * Validate dices according to rule
+     * 初始化 规则配置
+     */
+    public function __construct()
+    {
+        $this->setupConfig();
+    }
+
+    /**
+     * 验证 骰子数组 基本规范
      * @return boolen
      */
     public function validate(array $dices)
     {
         if(count($dices) !== 6) {
-            throw new Exception("Dices length isn't six");
+            throw new Exception("骰子数组的长度不为6");
+        }
+
+        foreach ($dices as $dice) {
+            if($dice < 0 || $dice > 6) {
+                throw new Exception("骰子的点数不在 1 到 6 的范围里");
+            }
         }
 
         return $this->rule($dices);
     }
 
     /**
-     * Get rule name
+     * 获取 当前规则 官名
      * @return string
      */
     public function getName()
@@ -50,23 +64,40 @@ class RuleAbstract implements Rule
     }
 
     /**
-     * Get rule level
+     * 获取 当前规则 别名
+     */
+    public function getAliasName()
+    {
+        return $this->aliasName;
+    }
+
+    /**
+     * 获取 当前规则 字段名
+     */
+    public function getFeildName()
+    {
+        return $this->feildName;
+    }
+
+    /**
+     * 获取 当前规则 级别
      */
     public function getLevel()
     {
-        return $this->level;
+        return $this->levelResult;
     }
 
     /**
-     * Get rule alias
+     * 获取 当前规则 积分
+     * @return int
      */
-    public function getAlias()
+    public function getPoint()
     {
-        return $this->alias;
+        return $this->point();
     }
 
     /**
-     * Rule
+     * 验证是否满足 当前规则
      * @return boolen
      */
     public function rule(array $dices)
@@ -74,5 +105,21 @@ class RuleAbstract implements Rule
         sort($dices);
         sort($this->dices);
         return $this->dices === $dices;
+    }
+
+    /**
+     * 用于初始化 $name, $aliasName, $level, $point
+     */
+    public function setupConfig()
+    {
+        $ruleName = $this->ruleName;
+        $baseName = "mooncake.rules.{$ruleName}.";
+
+        foreach (['name', 'point', 'alias_name', 'level', 'point', 'field_name'] as $key) {
+            $camelCase = camel_case($key);
+            $this->$camelCase = config($baseName . $key);
+        }
+
+        $this->levelResult = $this->level;
     }
 }
