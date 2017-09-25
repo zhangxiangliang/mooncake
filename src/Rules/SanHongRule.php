@@ -4,9 +4,7 @@ namespace Zhangxiangliang\Mooncake\Rules;
 
 class SanHongRule extends RuleAbstract
 {
-    protected $name = '探花';
-    protected $alias = '三红';
-    protected $level = 400;
+    protected $ruleName = 'sanhong';
 
     public function rule(array $dices)
     {

@@ -9,6 +9,7 @@ class SanHongRuleTest extends TestCase
 {
     public function setUp()
     {
+        parent::setUp();
         $this->rule = new SanHongRule;
     }
 
