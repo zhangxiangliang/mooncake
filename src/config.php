@@ -40,7 +40,7 @@ return [
         ],
         'wuzi' => [
             'name' => '状元',
-            'alias_name' => '五子'
+            'alias_name' => '五子',
             'field_name' => 'wuzi',
             'point' => 700,
             'level' => 700,
@@ -59,31 +59,31 @@ return [
             'point' => 500,
             'level' => 500,
         ],
-        'tanhua' => [
+        'sanhong' => [
             'name' => '探花',
             'alias_name' => '三红',
-            'field_name' => 'tanhua',
+            'field_name' => 'sanhong',
             'point' => 400,
             'level' => 400,
         ],
-        'jinshi' => [
+        'sijin' => [
             'name' => '进士',
             'alias_name' => '四进',
-            'field_name' => 'jinshi',
+            'field_name' => 'sijin',
             'point' => 300,
             'level' => 300,
         ],
-        'juren' => [
+        'erju' => [
             'name' => '举人',
             'alias_name' => '二举',
-            'field_name' => 'juren',
+            'field_name' => 'erju',
             'point' => 200,
             'level' => 200,
         ],
-        'xiucai' => [
+        'yixiu' => [
             'name' => '秀才',
             'alias_name' => '一秀',
-            'field_name' => 'xiucai',
+            'field_name' => 'yixiu',
             'point' => 100,
             'level' => 100,
         ],
