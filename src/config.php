@@ -6,9 +6,10 @@ return [
         'chajinhua' => [
             'name' => '状元',
             'alias_name' => '状元插金花',
-            'field_name' => 'zhuangyuan',
+            'field_name' => 'chajinhua',
             'point' => 1200,
             'level' => 1200,
+            'class' => \Zhangxiangliang\Mooncake\Rules\ChaJinHuaRule::class,
         ],
         'mantanghong' => [
             'name' => '',
@@ -16,6 +17,7 @@ return [
             'field_name' => 'mantanghong',
             'point' => 1100,
             'level' => 1100,
+            'class' => \Zhangxiangliang\Mooncake\Rules\ManTangHongRule::class,
         ],
         'biandijin' => [
             'name' => '状元',
@@ -23,6 +25,7 @@ return [
             'field_name' => 'biandijin',
             'point' => 1000,
             'level' => 1000,
+            'class' => \Zhangxiangliang\Mooncake\Rules\BianDiJinRule::class,
         ],
         'heiliubo' => [
             'name' => '状元',
@@ -30,6 +33,7 @@ return [
             'field_name' => 'heiliubo',
             'point' => 900,
             'level' => 900,
+            'class' => \Zhangxiangliang\Mooncake\Rules\HeiLiuBoRule::class,
         ],
         'wuhong' => [
             'name' => '状元',
@@ -37,6 +41,7 @@ return [
             'field_name' => 'wuhong',
             'point' => 800,
             'level' => 800,
+            'class' => \Zhangxiangliang\Mooncake\Rules\WuHongRule::class,
         ],
         'wuzi' => [
             'name' => '状元',
@@ -44,6 +49,7 @@ return [
             'field_name' => 'wuzi',
             'point' => 700,
             'level' => 700,
+            'class' => \Zhangxiangliang\Mooncake\Rules\WuZiRule::class,
         ],
         'sihong' => [
             'name' => '状元',
@@ -51,6 +57,7 @@ return [
             'field_name' => 'sihong',
             'point' => 600,
             'level' => 600,
+            'class' => \Zhangxiangliang\Mooncake\Rules\SiHongRule::class,
         ],
         'duitang' => [
             'name' => '榜眼',
@@ -58,6 +65,7 @@ return [
             'field_name' => 'duitang',
             'point' => 500,
             'level' => 500,
+            'class' => \Zhangxiangliang\Mooncake\Rules\DuiTangRule::class,
         ],
         'sanhong' => [
             'name' => '探花',
@@ -65,6 +73,7 @@ return [
             'field_name' => 'sanhong',
             'point' => 400,
             'level' => 400,
+            'class' => \Zhangxiangliang\Mooncake\Rules\SanHongRule::class,
         ],
         'sijin' => [
             'name' => '进士',
@@ -72,6 +81,7 @@ return [
             'field_name' => 'sijin',
             'point' => 300,
             'level' => 300,
+            'class' => \Zhangxiangliang\Mooncake\Rules\SiJinRule::class,
         ],
         'erju' => [
             'name' => '举人',
@@ -79,6 +89,7 @@ return [
             'field_name' => 'erju',
             'point' => 200,
             'level' => 200,
+            'class' => \Zhangxiangliang\Mooncake\Rules\ErJuRule::class,
         ],
         'yixiu' => [
             'name' => '秀才',
@@ -86,6 +97,7 @@ return [
             'field_name' => 'yixiu',
             'point' => 100,
             'level' => 100,
+            'class' => \Zhangxiangliang\Mooncake\Rules\YiXiuRule::class,
         ],
     ]
 ];
