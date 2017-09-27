@@ -12,7 +12,7 @@ class SiHongRule extends RuleAbstract
         $keys = array_keys($count, 4);
         if(!in_array(4, $keys)) return false;
 
-        $keys = array_keys($count, 1);
+        $keys = array_diff($dices, [4]);
         $this->levelResult = $this->level;
         foreach ($keys as $key) $this->levelResult += $key;
         return true;
