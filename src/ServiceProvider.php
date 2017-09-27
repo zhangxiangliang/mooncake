@@ -15,7 +15,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
-        $this->setupConfig();
+
     }
 
     /**
@@ -25,7 +25,8 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function register()
     {
-        //
+        $this->setupConfig();
+        $this->registerManager();
     }
 
     /**
@@ -48,5 +49,31 @@ class ServiceProvider extends LaravelServiceProvider
 
         // 加载配置文件到 $this->app['config']
         $this->mergeConfigFrom($source, 'mooncake');
+    }
+
+    /**
+     * 注册管理类
+     */
+    protected function registerManager()
+    {
+        $rules = $this->generatorRules();
+        $this->app->singleton('MooncakeRule', function() use ($rules) {
+            return new RuleManager($rules);
+        });
+    }
+
+    /**
+     * 规则数组生成
+     */
+    protected function generatorRules()
+    {
+        $rules = [];
+        $config = $this->app['config']['mooncake']['rules'];
+
+        foreach ($config as $key => $rule) {
+            $rules[] = new $rule['class'];
+        }
+
+        return $rules;
     }
 }
