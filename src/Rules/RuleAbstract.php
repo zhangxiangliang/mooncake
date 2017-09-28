@@ -108,6 +108,23 @@ class RuleAbstract implements Rule
     }
 
     /**
+     * 获取 格式化 骰子
+     * @return array
+     */
+    public function formatDice(array $dices)
+    {
+        usort($dices, function ($dice, $otherDice) {
+            $dice = $dice == 4 ? 100 : $dice;
+            $otherDice = $otherDice == 4 ? 100 : $otherDice;
+            if($dice == $otherDice) {
+                return 0;
+            }
+            return $dice > $otherDice ? -1 : 1;
+        });
+        return $dices;
+    }
+
+    /**
      * 用于初始化 $name, $aliasName, $level, $point
      */
     public function setupConfig()

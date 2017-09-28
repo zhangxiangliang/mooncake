@@ -25,6 +25,18 @@ class WuZiRule extends RuleAbstract
         $this->levelResult = $this->levelResult + $key;
         return true;
     }
+
+    public function formatDice(array $dices)
+    {
+        // 判断是否有 5 个一样的骰子
+        $count = array_count_values($dices);
+        $keys = array_keys($count, 5);
+        $max = array_pop($keys);
+
+        $keys = array_keys($count, 1);
+        $min = array_pop($keys);
+        return [$max, $max, $max, $max, $max, $min];
+    }
 }
 
 
