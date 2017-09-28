@@ -93,7 +93,7 @@ class RuleAbstract implements Rule
      */
     public function getPoint()
     {
-        return $this->point();
+        return $this->point;
     }
 
     /**
