@@ -1,6 +1,6 @@
 <?php
 
-namespace Zhangxiangliang\MoonCake;
+namespace Zhangxiangliang\Mooncake;
 
 use Illuminate\Foundation\Application as LaravelApplication;
 use Laravel\Lumen\Application as LumenApplication;
