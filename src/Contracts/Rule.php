@@ -47,6 +47,12 @@ interface Rule
     public function rule(array $dices);
 
     /**
+     * 获取 格式化 骰子
+     * @return array
+     */
+    public function formatDice(array $dices);
+
+    /**
      * 用于初始化 $name, $aliasName, $level, $point
      */
     public function setupConfig();
