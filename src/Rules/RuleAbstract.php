@@ -111,7 +111,7 @@ class RuleAbstract implements Rule
      * 获取 格式化 骰子
      * @return array
      */
-    public function formatDice(array $dices)
+    public function formatDices(array $dices)
     {
         usort($dices, function ($dice, $otherDice) {
             $dice = $dice == 4 ? 100 : $dice;

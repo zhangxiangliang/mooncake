@@ -26,7 +26,7 @@ class WuZiRule extends RuleAbstract
         return true;
     }
 
-    public function formatDice(array $dices)
+    public function formatDices(array $dices)
     {
         // 判断是否有 5 个一样的骰子
         $count = array_count_values($dices);

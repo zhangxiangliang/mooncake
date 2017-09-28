@@ -14,7 +14,7 @@ class SiJinRule extends RuleAbstract
         return !in_array(4, $keys) && count($keys) === 1;
     }
 
-    public function formatDice(array $dices)
+    public function formatDices(array $dices)
     {
         $count = array_count_values($dices);
         $keys = array_keys($count, 4);

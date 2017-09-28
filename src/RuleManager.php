@@ -68,7 +68,7 @@ class RuleManager
      */
     public function getDices()
     {
-        return $this->ruleIterator('formatDice', $this->dices, [$this->dices]);
+        return $this->ruleIterator('formatDices', $this->dices, [$this->dices]);
     }
 
     /**
