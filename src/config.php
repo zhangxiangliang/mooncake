@@ -1,11 +1,17 @@
 <?php
 
 return [
-    'sorted' => 'desc',
+    'default' => [
+        'name' => '罚黑，再接再厉',
+        'alias_name' => '罚黑，再接再厉',
+        'field_name' => 'fahei',
+        'point' => 0,
+        'level' => 0,
+    ],
     'rules' => [
         'chajinhua' => [
             'name' => '状元',
-            'alias_name' => '状元插金花',
+            'alias_name' => '插金花',
             'field_name' => 'chajinhua',
             'point' => 1200,
             'level' => 1200,
