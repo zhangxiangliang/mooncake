@@ -72,6 +72,15 @@ class RuleManager
     }
 
     /**
+     * 获取 规则 相关信息
+     * @return array
+     */
+    public function getRule($name)
+    {
+        return config("mooncake.rules.{$name}");
+    }
+
+    /**
      * 用于调用骰子方法
      * @param  匹配到相应规则时，要调用的方法
      * @param  没有匹配到相应规则时，返回默认值
