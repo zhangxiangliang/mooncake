@@ -26,7 +26,7 @@ interface Rule
     /**
      * 获取 当前规则 字段名
      */
-    public function getFeildName();
+    public function getFieldName();
 
     /**
      * 获取 当前规则 级别
