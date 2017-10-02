@@ -1,6 +1,6 @@
 <?php
 
-namespace Zhangxiangliang\Mooncake\Tests\Unit;
+namespace Zhangxiangliang\Mooncake\Tests\Unit\Rules;
 
 use Zhangxiangliang\Mooncake\Rules\YiXiuRule;
 use Zhangxiangliang\Mooncake\Tests\TestCase;
