@@ -1,23 +1,25 @@
 <?php
 
-namespace Zhangxiangliang\MoonCake;
+namespace Zhangxiangliang\Mooncake;
+
+use Zhangxiangliang\Mooncake\Contracts\Rule;
+use Zhangxiangliang\Mooncake\Traits\RuleConfigTrait;
+use Zhangxiangliang\Mooncake\Traits\RuleIteratorTrait;
+use Zhangxiangliang\Mooncake\Traits\RuleValidateTrait;
 
 class RuleManager
 {
     protected $rules;
+    protected $config;
 
-    public function __construct(array $rules)
+    use RuleConfigTrait;
+    use RuleValidateTrait;
+    use RuleIteratorTrait;
+
+    public function __construct(array $rules = [])
     {
+        $this->checkRulesInterface($rules);
         $this->rules = $rules;
-    }
-
-    /**
-     * 设置骰子
-     */
-    public function setDices(array $dices)
-    {
-        $this->dices = $dices;
-        return $this;
     }
 
     /**
@@ -26,7 +28,7 @@ class RuleManager
      */
     public function getName()
     {
-        return $this->ruleIterator('getName', config('mooncake.default.name'));
+        return $this->ruleIterator('getName', $this->getConfigDefault('name'));
     }
 
     /**
@@ -34,7 +36,7 @@ class RuleManager
      */
     public function getAliasName()
     {
-        return $this->ruleIterator('getAliasName', config('mooncake.default.alias_name'));
+        return $this->ruleIterator('getAliasName', $this->getConfigDefault('alias_name'));
     }
 
     /**
@@ -42,7 +44,7 @@ class RuleManager
      */
     public function getFieldName()
     {
-        return $this->ruleIterator('getFieldName', config('mooncake.default.field_name'));
+        return $this->ruleIterator('getFieldName', $this->getConfigDefault('field_name'));
     }
 
     /**
@@ -50,7 +52,7 @@ class RuleManager
      */
     public function getLevel()
     {
-        return $this->ruleIterator('getLevel', config('mooncake.default.level'));
+        return $this->ruleIterator('getLevel', $this->getConfigDefault('level'));
     }
 
     /**
@@ -59,7 +61,7 @@ class RuleManager
      */
     public function getPoint()
     {
-        return $this->ruleIterator('getPoint', config('mooncake.default.point'));
+        return $this->ruleIterator('getPoint', $this->getConfigDefault('point'));
     }
 
     /**
@@ -75,26 +77,40 @@ class RuleManager
      * 获取 规则 相关信息
      * @return array
      */
-    public function getRule($name)
+    public function getRuleConfig($name)
     {
         return config("mooncake.rules.{$name}");
     }
 
     /**
-     * 用于调用骰子方法
-     * @param  匹配到相应规则时，要调用的方法
-     * @param  没有匹配到相应规则时，返回默认值
-     * @param  调用的方法需要的参数
+     * 获取 所有规则 实例
+     * @return array
      */
-    private function ruleIterator($method, $default, $arguments = null)
+    public function getRules()
     {
-        foreach ($this->rules as $rule) {
-            if ($rule->validate($this->dices)) {
-                return $arguments
-                    ? $rule->$method(...$arguments)
-                    : $rule->$method();
-            }
-        }
-        return $default;
+        return $this->rules;
+    }
+
+    /**
+     * 设置骰子
+     */
+    public function setDices(array $dices)
+    {
+        $this->dices = $dices;
+        return $this;
+    }
+
+    /**
+     * 设置 规则数组
+     */
+    public function setRules($rules)
+    {
+        $this->validateIsArray($rules);
+        $this->validateRulesFieldName($rules);
+        $this->checkRulesInterface($rules);
+
+        $this->rules = array_merge($this->rules, $rules);
+
+        return $this;
     }
 }
