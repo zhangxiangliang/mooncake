@@ -2,33 +2,58 @@
 
 namespace Zhangxiangliang\Mooncake\Traits;
 
+use Exception;
+
 trait RuleConfigTrait
 {
     /**
+     * 获取 config 变量
+     */
+    public function getConfig()
+    {
+        if(!isset($this->config)) {
+            throw new Exception("请检查 相关配置文件 是否存在");
+        }
+        return $this->config;
+    }
+
+    /**
      * 设置 config 变量
      */
-    private function getConfig()
+    public function setConfig($config)
     {
-        return config('mooncake');
+        $this->config = $config;
     }
 
     /**
      * 获取默认配置名
      */
-    private function getConfigDefault($name = '')
+    public function getConfigDefault($name = '')
     {
-        return $name
-            ? $this->config['default'][$name]
-            : $this->config['default'];
+        if ($name == '') {
+            return $this->config['default'];
+        }
+
+        if (!isset($this->config['default'][$name])) {
+            throw new Exception("请检查 相关配置文件 的默认配置是否存在");
+        }
+
+        return $this->config['default'][$name];
     }
 
     /**
      * 获取默认规则
      */
-    private function getConfigRules($name = '')
+    public function getConfigRules($name = '')
     {
-        return $name
-            ? $this->config['rules'][$name]
-            : $this->config['rules'];
+        if ($name == '') {
+            return $this->config['rules'];
+        }
+
+        if (!isset($this->config['rules'][$name])) {
+            throw new Exception("请检查 相关配置文件 的规则配置是否存在");
+        }
+
+        return $this->config['rules'][$name];
     }
 }
