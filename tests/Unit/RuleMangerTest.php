@@ -10,6 +10,7 @@ class RuleMangerTest extends TestCase
 {
     public function setUp()
     {
+        parent::setUp();
         $this->manager = new RuleManager;
     }
 

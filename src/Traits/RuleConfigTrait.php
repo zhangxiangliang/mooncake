@@ -7,9 +7,9 @@ trait RuleConfigTrait
     /**
      * 设置 config 变量
      */
-    private function setConfig($name)
+    private function getConfig()
     {
-        $this->config = config('mooncake');
+        return config('mooncake');
     }
 
     /**

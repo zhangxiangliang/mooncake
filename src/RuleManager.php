@@ -20,6 +20,7 @@ class RuleManager
     {
         $this->checkRulesInterface($rules);
         $this->rules = $rules;
+        $this->config = $this->getConfig();
     }
 
     /**
