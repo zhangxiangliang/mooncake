@@ -71,7 +71,7 @@ class ServiceProvider extends LaravelServiceProvider
         $config = $this->app['config']['mooncake']['rules'];
 
         foreach ($config as $key => $rule) {
-            $rules[] = new $rule['class'];
+            $rules[$key] = new $rule['class'];
         }
 
         return $rules;
