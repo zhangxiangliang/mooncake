@@ -3,6 +3,7 @@
 namespace Zhangxiangliang\Mooncake;
 
 use Exception;
+use Zhangxiangliang\Mooncake\Contracts\Rule;
 
 class RuleManager
 {
@@ -11,9 +12,21 @@ class RuleManager
 
     public function __construct(array $rules = [])
     {
+        $this->setConfig(config('mooncake'));
         $this->validateRules($rules);
         $this->setRules($rules);
-        $this->setConfig(config('mooncake'));
+    }
+
+
+    public function getResult()
+    {
+        return collect([
+            'name' => $this->getName(),
+            'alias_name' => $this->getAliasName(),
+            'field_name' => $this->getFieldName(),
+            'level' => $this->getLevel(),
+            'point' => $this->getPoint(),
+        ]);
     }
 
     /**
@@ -68,25 +81,6 @@ class RuleManager
             throw new Exception('请设置塞子的值');
         }
         return $this->ruleIterator('formatDices', $this->dices, [$this->dices]);
-    }
-
-    /**
-     * 获取 规则 相关信息
-     * @return array
-     */
-    public function getRuleConfig($name = '')
-    {
-        if($name == '') {
-            return config("mooncake.rules");
-        }
-
-        $config = config("mooncake.rules.{$name}");
-
-        if(!$config) {
-            throw new Exception("请检查规则名称是否存在");
-        } else {
-            return $config;
-        }
     }
 
     /**
@@ -169,7 +163,7 @@ class RuleManager
      * @param  没有匹配到相应规则时，返回默认值
      * @param  调用的方法需要的参数
      */
-    public function ruleIterator($method, $default, $arguments = null)
+    private function ruleIterator($method, $default, $arguments = null)
     {
         foreach ($this->rules as $rule) {
             if ($rule->validate($this->dices)) {
