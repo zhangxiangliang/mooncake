@@ -22,11 +22,11 @@ class RuleMangerTest extends TestCase
         $this->assertEquals($passed, []);
     }
 
-    public function test_get_chajinghua_rules()
+    public function test_get_cha_jin_hua_rules()
     {
-        $this->manager->setRules(['chajinghua' => new ChaJinHuaRule]);
+        $this->manager->setRules(['chajinhua' => new ChaJinHuaRule]);
         $rules = $this->manager->getRules();
-        $passed = isset($rules['chajinghua']);
+        $passed = isset($rules['chajinhua']);
         $this->assertEquals($passed, true);
     }
 
@@ -38,7 +38,7 @@ class RuleMangerTest extends TestCase
 
     public function test_get_cha_jing_hua_name()
     {
-        $this->manager->setRules(['chajinghua' => new ChaJinHuaRule]);
+        $this->manager->setRules(['chajinhua' => new ChaJinHuaRule]);
         $this->manager->setDices([4, 4, 4, 4, 1, 1]);
         $passed = $this->manager->getName();
 
@@ -112,31 +112,10 @@ class RuleMangerTest extends TestCase
 
     public function test_get_cha_jing_hua_dices()
     {
-        $this->manager->setRules(['chajinghua' => new ChaJinHuaRule]);
+        $this->manager->setRules(['chajinhua' => new ChaJinHuaRule]);
         $this->manager->setDices([1, 4, 1, 4, 4, 4]);
         $passed = $this->manager->getDices();
         $this->assertEquals($passed, [4, 4, 4, 4, 1, 1]);
-    }
-
-    public function test_get_default_rule_config()
-    {
-        $passed = $this->manager->getRuleConfig();
-        $this->assertEquals($passed, config("mooncake.rules"));
-    }
-
-    public function test_get_man_tang_hong_rule_config()
-    {
-        $passed = $this->manager->getRuleConfig('mantanghong');
-        $this->assertEquals($passed, config("mooncake.rules.mantanghong"));
-    }
-
-    /**
-     * @expectedException Exception
-     * @expectedExceptionMessage 请检查规则名称是否存在
-     */
-    public function test_get_undefined_rule_config()
-    {
-        $passed = $this->manager->getRuleConfig('star');
     }
 
     /**
@@ -164,5 +143,63 @@ class RuleMangerTest extends TestCase
     public function test_validate_is_not_interface_rule()
     {
         $this->manager->validateRules(['mantanghong' => 'hello']);
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage 请检查 相关配置文件 是否存在
+     */
+    public function test_get_null_config()
+    {
+        $this->manager->setConfig(null);
+        $this->manager->getConfig();
+    }
+
+    public function test_get_config()
+    {
+        $passed = $this->manager->getConfig();
+        $this->assertEquals($passed, config('mooncake'));
+    }
+
+    public function test_get_default_config()
+    {
+        $passed = $this->manager->getConfigDefault();
+        $this->assertEquals($passed, config('mooncake.default'));
+    }
+
+    public function test_get_default_config_name()
+    {
+        $passed = $this->manager->getConfigDefault('name');
+        $this->assertEquals($passed, config('mooncake.default.name'));
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage 请检查 相关配置文件 的默认配置是否存在
+     */
+    public function test_get_unexist_default_config_hola()
+    {
+        $this->manager->getConfigDefault('halo');
+    }
+
+    public function test_get_all_config_rules()
+    {
+        $passed = $this->manager->getConfigRules();
+        $this->assertEquals($passed, config('mooncake.rules'));
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage 请检查 相关配置文件 的规则配置是否存在
+     */
+    public function test_get_unexist_config_rules_hola()
+    {
+        $passed = $this->manager->getConfigRules('halo');
+    }
+
+    public function test_get_cha_jin_hua_config_rules()
+    {
+        $passed = $this->manager->getConfigRules('chajinhua');
+        $this->assertEquals($passed, config('mooncake.rules.chajinhua'));
     }
 }
