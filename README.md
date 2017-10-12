@@ -54,13 +54,13 @@ $point = $rule->setDices([1, 2, 3, 4, 5, 6])->getPoint();
 
 #### 简介
 * 接口中除了 `get` 开头的方法外，均会返回 `$this` 方便链式调用。
+* 官名、别名、字段名、等级、积分可以在 `config/mooncake.php` 中设置。
 
 #### 骰子相关
 * `setDices($dices)` 设置骰子的值，需要自己生成值。
 * `getDices()` 获取骰子的值，会将骰子的值格式化后返回，格式化规则 除了特殊的 对堂、四进、五子 外，4 优先排序其他数值降序排列。
 
 #### 结果相关
-* 官名、别名、字段名、等级、积分可以在 `config/mooncake.php` 中设置
 * `getName()` 获取官名。
 * `getAliasName()` 获取别名。
 * `getFieldName()` 获取字段名。
@@ -75,3 +75,6 @@ $point = $rule->setDices([1, 2, 3, 4, 5, 6])->getPoint();
 * `getConfigRules($name)` 获取 规则相关配置，如果无参则返回规则列表。
 * `getConfigDefault($name)` 获取 默认相关配置，如果无参则返回默认相关列表。
 
+## 项目相关
+### 简单流程
+![简单流程](/assets/images/flow.png)
